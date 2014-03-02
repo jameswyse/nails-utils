@@ -1,0 +1,33 @@
+{
+  "name": "nails-utils",
+  "version": "0.0.1",
+  "description": "General purpose utilities for node projects",
+  "author": "James Wyse <james@jameswyse.net>",
+  "license": "MIT",
+  "repository": "https://github.com/nails/nails-utils",
+  "main": "index.js",
+  "readmeFilename": "README.md",
+  "scripts": {},
+  "keywords": [
+    "util",
+    "utils",
+    "utilities",
+    "hoek",
+    "hapi",
+    "nails",
+    "nails-framework"
+  ],
+
+  "dependencies": {
+    "graceful-fs": "^2.0.2",
+    "is": "^0.2.7",
+    "string": "^1.8.0",
+    "bluebird": "^1.0.7",
+    "chalk": "^0.4.0",
+    "boom": "^2.2.1",
+    "joi": "^2.7.0",
+    "glob": "^3.2.9",
+    "request": "^2.34.0",
+    "hoek": "^1.5.0"
+  }
+}
