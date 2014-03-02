@@ -1,6 +1,6 @@
 {
   "name": "nails-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "General purpose utilities for node projects",
   "author": "James Wyse <james@jameswyse.net>",
   "license": "MIT",
