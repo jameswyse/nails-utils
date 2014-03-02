@@ -3,7 +3,7 @@
 nails-utils
 ===============
 
-General purpose utilities for your node project. Used in [Nails Framework](nails) and associated projects.
+General purpose utilities for your node project. Used in [Nails Framework](http://ghub.io/nails-framework) and associated projects.
 
 # Included Modules
 
