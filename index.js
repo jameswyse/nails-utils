@@ -1,42 +1,45 @@
-var Boom        = require('boom');
-var Hoek        = require('hoek');
-var Promise     = require('bluebird');
-var Joi         = require('joi');
-var is          = require('is');
-var path        = require('path');
-var url         = require('url');
-var fs          = require('graceful-fs');
-var glob        = require('glob');
-var chalk       = require('chalk');
-var string      = require('string');
-var request     = require('request');
-var DummyLogger = require('./lib/DummyLogger');
-var random      = require('./lib/random');
-var finder      = require('./lib/finder').bind(exports);
+var hoek    = require('hoek');
+var async   = require('async');
+var chalk   = require('chalk');
+var Promise = require('bluebird');
+var is      = require('is');
+var string  = require('string');
+var glob    = require('glob');
+var path    = require('path');
+var url     = require('url');
+var util    = require('util');
+var fs      = require('graceful-fs');
+var request = require('request');
 
-for (var i in Hoek) {
-  if (Hoek.hasOwnProperty(i)) {
-    exports[i] = Hoek[i];
+var finder  = require('./lib/finder').bind(exports);
+var random  = require('./lib/random');
+var noop    = function() {};
+
+// Copy over Hoek utilities
+for (var i in hoek) {
+  if (hoek.hasOwnProperty(i)) {
+    exports[i] = hoek[i];
   }
 }
 
-exports.error       = Boom;
-exports.joi         = Joi;
-exports.is          = is;
-exports.path        = path;
-exports.url         = url;
-exports.fs          = fs;
-exports.glob        = glob;
-exports.chalk       = chalk;
-exports.string      = string;
-exports.Promise     = Promise;
-exports.request     = request;
-exports.DummyLogger = DummyLogger;
-exports.finder      = finder;
-exports.random      = random;
+// # External Modules
+exports.Promise  = Promise;
+exports.chalk    = chalk;
+exports.glob     = glob;
+exports.string   = string;
+exports.is       = is;
+exports.async    = async;
+exports.finder   = finder;
+exports.fs       = fs;
+exports.request  = request;
 
-if (!module.parent) {
-  console.log(' - ' + Object.keys(exports).join('\n - '));
-}
+//# Node Modules
+exports.path     = path;
+exports.url      = url;
+exports.inherits = util.inherits;
+exports.inspect  = util.inspect;
 
-
+//# Additional Methods
+exports.noop     = noop;
+exports.defaults = exports.applyToDefaults;
+exports.random   = random;

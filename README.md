@@ -3,7 +3,7 @@
 nails-utils
 ===============
 
-General purpose utilities for your node project. Used in [Nails Framework](http://ghub.io/nails-framework) and associated projects.
+General purpose utilities used in [Nails Framework](http://ghub.io/nails-framework) and associated projects.
 
 # Included Modules
 
@@ -11,8 +11,7 @@ General purpose utilities for your node project. Used in [Nails Framework](http:
 
 | Name                 | Module                                          |
 | :------------------- | ----------------------------------------------: |
-| exports.**error**    | [Boom](http://ghub.io/boom)                     |
-| exports.**joi**      | [Joi](http://ghub.io/joi)                       |
+| exports.**Promise**  | [Bluebird](http://ghub.io/bluebird)             |
 | exports.**is**       | [Is](http://ghub.io/is)                         |
 | exports.**path**     | [path](http://nodejs.org/api/path.html)         |
 | exports.**url**      | [url](http://nodejs.org/api/url.html)           |
@@ -20,51 +19,9 @@ General purpose utilities for your node project. Used in [Nails Framework](http:
 | exports.**glob**     | [glob](http://ghub.io/glob)                     |
 | exports.**chalk**    | [chalk](http://ghub.io/chalk)                   |
 | exports.**string**   | [string](http://ghub.io/string)                 |
-| exports.**Promise**  | [bluebird](http://ghub.io/bluebird)             |
 | exports.**request**  | [request](http://ghub.io/request)               |
 
 # Extra Methods
-
-## DummyLogger
-A DummyLogger stores messages internally and doesn't output anything. It implements the same methods as an [Intel Logger](http://ghub.io/intel). Logged messages can be retrieved later by calling `DummyLogger#getLogs()`.
-
-Can be used to buffer log messages until [Intel](http://ghub.io/intel) has been initialized.
-
-### DummyLogger#getLogs()
-Returns an array of log objects in the form: 
-```javascript
-[
-  { 'level': String, 'args': arguments }
-]
-```
-
-**Note:** `args` is a reference to the function's `arguments` value and is not a proper `Array`.
-
-### Example
-
-```javascript
-var utils = require('nails-utils');
-
-// Create a DummyLogger
-var log = new utils.DummyLogger();
-
-// Log some messages
-log.info('Welcome to my application!');
-log.error('Something Broke', new Error('oh the humanity'));
-
-// .. set up your app, load configs, etc
-
-// Get messages
-var messages = log.getLogs();
-
-// Override log with intel
-log = require('intel');
-
-// Log buffered messages
-messages.forEach(function(msg) {
-  log[msg.level].apply(log, msg.args);
-});
-```
 
 ## finder(options, callback)
 Finds files that match a given pattern. `callback` is called for every file found (like `Array#forEach`)
@@ -99,7 +56,7 @@ utils.finder(options, function(filename, total) {
 Returns a random `Number` between `min` and `max`.
  * `min` (**Number**) - Minimum Number
  * `max` (**Number**) - Maximum Number
- 
+
 # Licence
 
 The MIT License (MIT)
